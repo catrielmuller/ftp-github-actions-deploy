@@ -12,17 +12,15 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+  FTP-Deploy:
+    name: FTP-Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.1.0
+    - uses: actions/checkout@v2
+    - name: Upload ftp
+      uses: sebastianpopp/ftp-action@releases/v2
       with:
-        fetch-depth: 2
-    - name: FTP-Deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@3.1.1
-      with:
-        ftp-server: ftp://files.000webhost.com/
-        ftp-username: testgithubaction
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: src/
+        host: files.000webhost.com
+        user: testgithubaction
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-localDir: "src"
