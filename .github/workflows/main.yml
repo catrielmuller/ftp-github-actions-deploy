@@ -23,4 +23,4 @@ jobs:
         host: files.000webhost.com
         user: testgithubaction
         password: ${{ secrets.FTP_PASSWORD }}
-        local-localDir: "src"
+        localDir: "src"
